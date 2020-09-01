@@ -1,0 +1,95 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\ShortURL;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+class ShortURLController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $shortURL = ShortURL::create([
+            'url' => $request->get('url'),
+            'short_url' => parse_url($request->get('url'), PHP_URL_HOST),
+            'misc' => json_encode($request)
+        ]);
+
+        dd(URL::to('/') . "/" . $shortURL->short_url);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\ShortURL  $shortURL
+     * @return \Illuminate\Http\Response
+     */
+    public function show(ShortURL $shortURL)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\ShortURL  $shortURL
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(ShortURL $shortURL)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\ShortURL  $shortURL
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, ShortURL $shortURL)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\ShortURL  $shortURL
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(ShortURL $shortURL)
+    {
+        //
+    }
+}
