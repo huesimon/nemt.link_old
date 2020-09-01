@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ShortURL;
+use Faker\Provider\Uuid;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -41,7 +42,7 @@ class ShortURLController extends Controller
     {
         $shortURL = ShortURL::create([
             'url' => $request->get('url'),
-            'short_url' => parse_url($request->get('url'), PHP_URL_HOST),
+            'short_url' => Uuid::numberBetween(1000, 9999),
             'misc' => json_encode($request)
         ]);
 

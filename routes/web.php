@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 
 Route::get('/{shorturl}', function ($shortUrl) {
-    $shortUrl = ShortURL::where('short_url', $shortUrl)->firstOrFail();
+    $shortUrl = ShortURL::where('short_url', $shortUrl)->orderBy('id', 'DESC')->firstOrFail();
     
     return new RedirectResponse($shortUrl->url);
 });
