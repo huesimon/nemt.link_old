@@ -28,22 +28,10 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="container">
-                <div class="row justify-content-md-center">
-                    <div class="col col-lg-2">
-                        <div class="title m-b-md">
-                            nemt link
-                        </div>
-                        <div class="prompt" style="">
-                            <form action="{{ route('shorturl.store') }}" method="POST">
-                                @csrf
-                                <input type="url" data-test="focus-input" autocomplete="off" id="url" name="url">
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            <div id="app">
+                <nemt-link endpoint="{{ route('shorturl.store') }}"></nemt-link>
             </div>
         </div>
     </body>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </html>

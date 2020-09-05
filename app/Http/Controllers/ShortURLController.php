@@ -45,7 +45,7 @@ class ShortURLController extends Controller
             'short_url' => Uuid::numberBetween(1000, 9999),
             'misc' => json_encode($request)
         ]);
-
+        return URL::to('/') . "/" . $shortURL->short_url;
         dd(URL::to('/') . "/" . $shortURL->short_url);
     }
 

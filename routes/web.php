@@ -30,3 +30,7 @@ Route::get('/{shorturl}', function ($shortUrl) {
 Route::resources([
     'shorturl' => 'ShortURLController'
     ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
