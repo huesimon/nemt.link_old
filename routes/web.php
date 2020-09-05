@@ -1,6 +1,7 @@
 <?php
 
 use App\ShortURL;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 
@@ -14,23 +15,19 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resources([
+    'shorturl' => 'ShortURLController'
+    ]);
+Route::get('/home', 'HomeController@index')->name('home');
 
+// Wildcard route needs to be added last!!
 Route::get('/{shorturl}', function ($shortUrl) {
     $shortUrl = ShortURL::where('short_url', $shortUrl)->orderBy('id', 'DESC')->firstOrFail();
     
     return new RedirectResponse($shortUrl->url);
 });
-
-
-Route::resources([
-    'shorturl' => 'ShortURLController'
-    ]);
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
