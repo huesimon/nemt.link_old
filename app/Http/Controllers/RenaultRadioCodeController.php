@@ -49,6 +49,13 @@ class RenaultRadioCodeController extends Controller
         //
     }
 
+    public function showBySecurityCode($securityCode)
+    {
+        $radioCode = RenaultRadioCode::where('security_code', '=', $securityCode)->firstOrFail();
+        
+        return $radioCode->radio_code;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
