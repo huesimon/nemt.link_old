@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TelegramMessagesController;
 use App\ShortURL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -21,13 +22,17 @@ Route::get('/', function () {
 });
 
 Route::resources([
-    'shorturl' => 'ShortURLController'
+    'shorturl' => 'ShortURLController',
+    'radiocodes' => 'RenaultRadioCodeController',
+    'telegram' => 'TelegramMessagesController',
     ]);
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/telegram/webhook', 'TelegramMessagesController@webhook')->name('telegram-webhook');
+
 // Wildcard route needs to be added last!!
-Route::get('/{shorturl}', function ($shortUrl) {
-    $shortUrl = ShortURL::where('short_url', $shortUrl)->orderBy('id', 'DESC')->firstOrFail();
+// Route::get('/{shorturl}', function ($shortUrl) {
+//     $shortUrl = ShortURL::where('short_url', $shortUrl)->orderBy('id', 'DESC')->firstOrFail();
     
-    return new RedirectResponse($shortUrl->url);
-});
+//     return new RedirectResponse($shortUrl->url);
+// });
