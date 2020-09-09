@@ -30,8 +30,8 @@ jobs:
         KEY: ${{ secrets.SSHKEY }}
         script: | 
           cat /var/www/nemt.link/README.md
-          sudo chgrp -R www-data /var/www/nemt.link/storage /var/www/nemt.link/bootstrap/cache
-          sudo chmod -R ug+rwx /var/www/nemt.link/storage /var/www/nemt.link/bootstrap/cache
+          chgrp -R www-data /var/www/nemt.link/storage /var/www/nemt.link/bootstrap/cache
+          chmod -R ug+rwx /var/www/nemt.link/storage /var/www/nemt.link/bootstrap/cache
           
     - name: Executing remote  command
       uses: appleboy/ssh-action@master
