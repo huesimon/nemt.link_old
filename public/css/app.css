@@ -11008,3 +11008,15 @@ body {
   transition: all 0.35s var(--a-curve);
 }
 
+.photo-container {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+}
+
+.post-image {
+  width: 300px;
+  height: 300px;
+}
+

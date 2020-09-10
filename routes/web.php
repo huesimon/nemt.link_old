@@ -17,14 +17,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Auth::routes();
+
+// Subdomain (s.nemt.link)
+// Route::domain('s' . (env('APP_DOMAIN') . env('APP_TLD')))->group(function () {
+
+$instaSubdomain = sprintf('%s.%s.%s', 's', env('APP_DOMAIN'), env('APP_TLD'));
+
+// Route::domain($subdomain)->group(function () {
+
+Route::domain($instaSubdomain)->group(function () {
+    Route::get('/', 'HomeController@social')->name('social');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
 
 Route::resources([
     'shorturl' => 'ShortURLController',
     'radiocodes' => 'RenaultRadioCodeController',
     'telegram' => 'TelegramMessagesController',
+    'user' => 'UserController',
     ]);
 
 Route::get('/radiocodes/find/{security_code}', 'RenaultRadioCodeController@showBySecurityCode')->name('home');

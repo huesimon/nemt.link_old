@@ -27,6 +27,10 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 Vue.component('nemt-link', require('./components/NemtLinkComponent.vue').default);
 
+Vue.component('social-body', require('./components/social/SocialBody.vue').default);
+Vue.component('social-footer', require('./components/social/SocialFooter.vue').default);
+Vue.component('social-header', require('./components/social/SocialHeader.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
