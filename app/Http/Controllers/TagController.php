@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Like;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class LikeController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class LikeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Like  $like
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(like $like)
+    public function show(tag $tag)
     {
         //
     }
@@ -52,10 +52,10 @@ class LikeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Like  $like
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(like $like)
+    public function edit(tag $tag)
     {
         //
     }
@@ -64,10 +64,10 @@ class LikeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Like  $like
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, like $like)
+    public function update(Request $request, tag $tag)
     {
         //
     }
@@ -75,10 +75,10 @@ class LikeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Like  $like
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(like $like)
+    public function destroy(tag $tag)
     {
         //
     }

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\TelegramMessagesController;
-use App\ShortURL;
+use App\Models\ShortURL;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
@@ -50,7 +50,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/telegram/webhook', 'TelegramMessagesController@webhook')->name('telegram-webhook');
 
 // Wildcard route needs to be added last!!
-Route::get('/{shorturl}', function ($shortUrl) {
+Route::get('/{shorturl}/', function ($shortUrl) {
     $shortUrl = ShortURL::where('short_url', $shortUrl)->orderBy('id', 'DESC')->firstOrFail();
     
     return new RedirectResponse($shortUrl->url);

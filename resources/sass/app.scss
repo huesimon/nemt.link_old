@@ -30,24 +30,17 @@
     font-size: 120%;
     line-height: 120%;
 }
-
-body,
-input,
-select,
-textarea,
-button {
-    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro",
-        "Helvetica Neue", Helvetica, Arial, sans-serif;
+* {
+    font-family: "Open Sans", sans-serif !important;
 }
-
 html,
 body {
     background-color: #bdbdbd;
     color: #424242;
-    font-family: "Nunito", sans-serif;
     font-weight: 200;
     height: 100vh;
     margin: 0;
+    font-family: "Open Sans", sans-serif;
 }
 
 .full-height {

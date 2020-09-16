@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ShortURL;
+use App\Models\ShortURL;
 use Faker\Provider\Uuid;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -52,7 +52,7 @@ class ShortURLController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ShortURL  $shortURL
+     * @param  \App\Models\ShortURL  $shortURL
      * @return \Illuminate\Http\Response
      */
     public function show(ShortURL $shortURL)
@@ -63,7 +63,7 @@ class ShortURLController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ShortURL  $shortURL
+     * @param  \App\Models\ShortURL  $shortURL
      * @return \Illuminate\Http\Response
      */
     public function edit(ShortURL $shortURL)
@@ -75,7 +75,7 @@ class ShortURLController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ShortURL  $shortURL
+     * @param  \App\Models\ShortURL  $shortURL
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ShortURL $shortURL)
@@ -86,7 +86,7 @@ class ShortURLController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ShortURL  $shortURL
+     * @param  \App\Models\ShortURL  $shortURL
      * @return \Illuminate\Http\Response
      */
     public function destroy(ShortURL $shortURL)

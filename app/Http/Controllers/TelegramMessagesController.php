@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\RenaultRadioCode;
-use App\TelegramMessages;
+use App\Models\RenaultRadioCode;
+use App\Models\TelegramMessages;
 use Illuminate\Http\Request;
 
 class TelegramMessagesController extends Controller
@@ -49,7 +49,7 @@ class TelegramMessagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TelegramMessages  $telegramMessages
+     * @param  \App\Models\TelegramMessages  $telegramMessages
      * @return \Illuminate\Http\Response
      */
     public function show(TelegramMessages $telegramMessages)
@@ -60,7 +60,7 @@ class TelegramMessagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\TelegramMessages  $telegramMessages
+     * @param  \App\Models\TelegramMessages  $telegramMessages
      * @return \Illuminate\Http\Response
      */
     public function edit(TelegramMessages $telegramMessages)
@@ -72,7 +72,7 @@ class TelegramMessagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TelegramMessages  $telegramMessages
+     * @param  \App\Models\TelegramMessages  $telegramMessages
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, TelegramMessages $telegramMessages)
@@ -83,7 +83,7 @@ class TelegramMessagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TelegramMessages  $telegramMessages
+     * @param  \App\Models\TelegramMessages  $telegramMessages
      * @return \Illuminate\Http\Response
      */
     public function destroy(TelegramMessages $telegramMessages)

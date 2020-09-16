@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,6 +29,10 @@ class HomeController extends Controller
 
     public function social()
     {
-        return view('social.index');
+        $posts = Post::all();
+        // dd($posts);
+        return view('social.index', [
+            'posts' => $posts
+        ]);
     }
 }

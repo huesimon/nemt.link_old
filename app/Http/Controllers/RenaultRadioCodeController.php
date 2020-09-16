@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\RenaultRadioCode;
+use App\Models\RenaultRadioCode;
 use Illuminate\Http\Request;
 
 class RenaultRadioCodeController extends Controller
@@ -41,7 +41,7 @@ class RenaultRadioCodeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\RenaultRadioCode  $renaultRadioCode
+     * @param  \App\Models\RenaultRadioCode  $renaultRadioCode
      * @return \Illuminate\Http\Response
      */
     public function show(RenaultRadioCode $renaultRadioCode)
@@ -59,7 +59,7 @@ class RenaultRadioCodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\RenaultRadioCode  $renaultRadioCode
+     * @param  \App\Models\RenaultRadioCode  $renaultRadioCode
      * @return \Illuminate\Http\Response
      */
     public function edit(RenaultRadioCode $renaultRadioCode)
@@ -71,7 +71,7 @@ class RenaultRadioCodeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\RenaultRadioCode  $renaultRadioCode
+     * @param  \App\Models\RenaultRadioCode  $renaultRadioCode
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, RenaultRadioCode $renaultRadioCode)
@@ -82,7 +82,7 @@ class RenaultRadioCodeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\RenaultRadioCode  $renaultRadioCode
+     * @param  \App\Models\RenaultRadioCode  $renaultRadioCode
      * @return \Illuminate\Http\Response
      */
     public function destroy(RenaultRadioCode $renaultRadioCode)
