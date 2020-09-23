@@ -44,7 +44,7 @@ Route::resources([
     'user' => 'UserController',
     ]);
 
-Route::get('/radiocodes/find/{security_code}', 'RenaultRadioCodeController@showBySecurityCode')->name('home');
+Route::get('/radiocodes/find/{security_code}', 'RenaultRadioCodeController@showBySecurityCode')->name('showRadioCode');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/telegram/webhook', 'TelegramMessagesController@webhook')->name('telegram-webhook');
