@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\RenaultRadioCode;
 use App\Models\TelegramMessages;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Facade\FlareClient\Http\Exceptions\BadResponse;
 
 class TelegramMessagesController extends Controller
 {
@@ -13,6 +15,26 @@ class TelegramMessagesController extends Controller
         $telegramMessage = new TelegramMessages();
         $telegramMessage->json = json_encode($request->all());
         $telegramMessage->save();
+        $text = $request->json()->get('message')['text'];
+        
+        $chatId = $request->json()->get('message')['chat']['id'];
+        try {
+            $radioCode = RenaultRadioCode::where('security_code', '=', $text)->firstOrFail();
+            $url = sprintf(
+                'https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s',
+                env('TELEGRAM_BOT_API_KEY'),
+                $chatId,
+                $radioCode->radio_code
+            );
+        } catch (\Throwable $th) {
+            $url = sprintf(
+                'https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s',
+                env('TELEGRAM_BOT_API_KEY'),
+                $chatId,
+                "Couldn't find code for: " . $text
+            );
+        }
+        $response = Http::get($url);
         return true;
     }
     /**
