@@ -20,23 +20,24 @@ class TelegramMessagesController extends Controller
         if(isset($telegramMsg['text'])){
             $text = $telegramMsg['text'];
             $chatId = $request->json()->get('message')['chat']['id'];
-        }
         
-        try {
-            $radioCode = RenaultRadioCode::where('security_code', '=', $text)->firstOrFail();
-            $url = sprintf(
-                'https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s',
-                env('TELEGRAM_BOT_API_KEY'),
-                $chatId,
-                $radioCode->radio_code
-            );
-        } catch (\Throwable $th) {
-            $url = sprintf(
-                'https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s',
-                env('TELEGRAM_BOT_API_KEY'),
-                $chatId,
-                "Couldn't find code for: " . $text
-            );
+        
+            try {
+                $radioCode = RenaultRadioCode::where('security_code', '=', $text)->firstOrFail();
+                $url = sprintf(
+                    'https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s',
+                    env('TELEGRAM_BOT_API_KEY'),
+                    $chatId,
+                    $radioCode->radio_code
+                );
+            } catch (\Throwable $th) {
+                $url = sprintf(
+                    'https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s',
+                    env('TELEGRAM_BOT_API_KEY'),
+                    $chatId,
+                    "Couldn't find code for: " . $text
+                );
+            }
         }
         $response = Http::get($url);
         return true;
