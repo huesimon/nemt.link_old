@@ -38,8 +38,8 @@ class TelegramMessagesController extends Controller
                     "Couldn't find code for: " . $text
                 );
             }
+            $response = Http::get($url);
         }
-        $response = Http::get($url);
         return true;
     }
     /**
