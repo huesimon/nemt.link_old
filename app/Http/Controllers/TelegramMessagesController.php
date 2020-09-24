@@ -15,7 +15,8 @@ class TelegramMessagesController extends Controller
         $telegramMessage = new TelegramMessages();
         $telegramMessage->json = json_encode($request->all());
         $telegramMessage->save();
-        $telegramMsg = $request->json()->get('message')['text']
+        $telegramMsg = $request->json()->get('message');
+        
         if(isset($telegramMsg['text'])){
             $text = $telegramMsg['text'];
             $chatId = $request->json()->get('message')['chat']['id'];
@@ -79,7 +80,7 @@ class TelegramMessagesController extends Controller
      */
     public function show(TelegramMessages $telegramMessages)
     {
-        //
+        dd($telegramMessages);
     }
 
     /**
