@@ -15,9 +15,12 @@ class TelegramMessagesController extends Controller
         $telegramMessage = new TelegramMessages();
         $telegramMessage->json = json_encode($request->all());
         $telegramMessage->save();
-        $text = $request->json()->get('message')['text'];
+        $telegramMsg = $request->json()->get('message')['text']
+        if(isset($telegramMsg['text'])){
+            $text = $telegramMsg['text'];
+            $chatId = $request->json()->get('message')['chat']['id'];
+        }
         
-        $chatId = $request->json()->get('message')['chat']['id'];
         try {
             $radioCode = RenaultRadioCode::where('security_code', '=', $text)->firstOrFail();
             $url = sprintf(
